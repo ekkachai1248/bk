@@ -59,6 +59,13 @@ $stmt->bind_param("sssssi", $total_all, $fullname, $phone, $address, $booking_ty
 $stmt->execute();
 $booking_id = $stmt->insert_id;
 
+// ส่ง Telegram แจ้งเตือน
+$token = '8018122978:AAFf73UjxKX8np4mobnA1o3XIINTQyUbRiU';
+$chat_id = '6365174460';
+$msg = "📦 คำสั่งซื้อใหม่\nID: $booking_id\n👤 $fullname\n💰 " . number_format($total_all, 2) . " บาท";
+file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" . urlencode($msg));
+
+
 // บันทึกข้อมูลลงในตาราง booking_details สำหรับอาหาร
 if (!empty($f_id)) {
     foreach ($f_id as $index => $food_id) {
