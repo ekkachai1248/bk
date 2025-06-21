@@ -62,7 +62,7 @@ $booking_id = $stmt->insert_id;
 // ส่ง Telegram แจ้งเตือน
 $token = '8018122978:AAFf73UjxKX8np4mobnA1o3XIINTQyUbRiU';
 $chat_id = '6365174460';
-$msg = "📦 คำสั่งซื้อใหม่\nID: $booking_id\n👤 $fullname\n💰 " . number_format($total_all, 2) . " บาท";
+$msg = "📦 มีคำสั่งซื้อใหม่ Order ID: $booking_id\n👤 ลูกค้า: $fullname\n💰 " . number_format($total_all, 2) . " บาท\n รายละเอียด: http://bit.ly/3ZFiJFY";
 file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" . urlencode($msg));
 
 
