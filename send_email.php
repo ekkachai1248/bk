@@ -32,4 +32,5 @@ try {
 } catch (Exception $e) {
     echo "ไม่สามารถส่งอีเมลได้: {$mail->ErrorInfo}";
 }
+
 ?>
